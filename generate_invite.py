@@ -19,8 +19,8 @@ PERMISSIONS = {
 # Calculate total permissions value
 total_permissions = sum(PERMISSIONS.values())
 
-# Generate the invite URL
-invite_url = f"https://discord.com/api/oauth2/authorize?client_id={BOT_CLIENT_ID}&permissions={total_permissions}&scope=bot"
+# Generate the invite URL with proper scope and response type
+invite_url = f"https://discord.com/api/oauth2/authorize?client_id={BOT_CLIENT_ID}&permissions={total_permissions}&scope=bot&response_type=code"
 
 print("Discord Bot Invite Link Generator")
 print("=" * 40)
