@@ -33,9 +33,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     """Event triggered when bot successfully connects to Discord"""
-    logging.info(f"✅ Bot connesso come {bot.user}")
-    logging.info(f"Bot ID: {bot.user.id}")
-    logging.info(f"Connesso a {len(bot.guilds)} server(s)")
+    if bot.user:
+        logging.info(f"✅ Bot connesso come {bot.user}")
+        logging.info(f"Bot ID: {bot.user.id}")
+        logging.info(f"Connesso a {len(bot.guilds)} server(s)")
     
     # Set bot status
     await bot.change_presence(
@@ -56,6 +57,11 @@ async def on_voice_state_update(member, before, after):
         channel = bot.get_channel(TEXT_CHANNEL_ID)
         if not channel:
             logging.error(f"Canale di testo con ID {TEXT_CHANNEL_ID} non trovato")
+            return
+        
+        # Type check to ensure it's a text channel
+        if not hasattr(channel, 'send'):
+            logging.error(f"Il canale con ID {TEXT_CHANNEL_ID} non è un canale di testo")
             return
 
         # User joins a voice channel
