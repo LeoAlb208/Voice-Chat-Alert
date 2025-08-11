@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 
 # Get configuration from environment variables
-TEXT_CHANNEL_ID = int(os.getenv('TEXT_CHANNEL_ID', '1404501486939144324'))
+TEXT_CHANNEL_ID = int(os.getenv('TEXT_CHANNEL_ID', '1404522797765492858'))
 BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 
 if not BOT_TOKEN:

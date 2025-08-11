@@ -22,7 +22,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Configuration Management
 - **Environment Variables**: Bot token and channel IDs configured through environment variables
-- **Fallback Defaults**: Default text channel ID provided as fallback configuration
+- **Fallback Defaults**: Default text channel ID (1404522797765492858) provided as fallback configuration
 - **Error Handling**: Validates required environment variables at startup
 
 ### Logging System
