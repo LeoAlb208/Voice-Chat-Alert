@@ -95,8 +95,27 @@ keep_awake_service = KeepAwakeService(ping_interval_minutes=12)
 def start_keep_awake():
     """Start the keep-awake service"""
     # Wait a bit for the Flask server to be ready
-    time.sleep(10)
-    keep_awake_service.start()
+    logging.info("⏳ Waiting for Flask server to be ready...")
+    time.sleep(5)
+    
+    # Test if Flask server is responsive before starting
+    max_attempts = 6
+    for attempt in range(max_attempts):
+        try:
+            response = requests.get("http://localhost:5000/ping", timeout=3)
+            if response.status_code == 200:
+                logging.info("✅ Flask server is ready, starting keep-awake service")
+                keep_awake_service.start()
+                return
+            else:
+                logging.warning(f"⚠️ Flask server not ready (attempt {attempt+1}/{max_attempts})")
+        except Exception as e:
+            logging.warning(f"⚠️ Flask server not ready (attempt {attempt+1}/{max_attempts}): {e}")
+        
+        if attempt < max_attempts - 1:
+            time.sleep(5)
+    
+    logging.error("❌ Flask server never became ready, keep-awake service not started")
 
 if __name__ == "__main__":
     # Test the service
