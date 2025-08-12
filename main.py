@@ -4,6 +4,7 @@ import os
 import asyncio
 import logging
 from keep_alive import keep_alive
+from keep_awake import start_keep_awake
 
 # Configure logging
 logging.basicConfig(
@@ -176,6 +177,11 @@ async def main():
 if __name__ == "__main__":
     # Start the keep-alive web server
     keep_alive()
+    
+    # Start the keep-awake service (ping every 12 minutes to stay under 15min limit)
+    import threading
+    awake_thread = threading.Thread(target=start_keep_awake, daemon=True)
+    awake_thread.start()
     
     # Start the Discord bot
     try:
