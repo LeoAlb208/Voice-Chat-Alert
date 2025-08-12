@@ -1,10 +1,14 @@
 [project]
-name = "repl-nix-workspace"
-version = "0.1.0"
-description = "Add your description here"
+name = "discord-voice-monitor"
+version = "1.0.0"
+description = "Discord bot che monitora l'attività dei canali vocali"
 requires-python = ">=3.11"
 dependencies = [
     "discord-py>=2.5.2",
     "flask>=3.1.1",
     "requests>=2.32.4",
 ]
+
+[project.urls]
+Homepage = "https://github.com/your-username/Voice-Chat-Alert"
+Repository = "https://github.com/your-username/Voice-Chat-Alert"
