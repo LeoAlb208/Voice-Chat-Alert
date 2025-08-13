@@ -3,7 +3,6 @@ from discord.ext import commands
 import os
 import asyncio
 import logging
-from keep_alive import keep_alive
 
 # Configure logging
 logging.basicConfig(
@@ -161,7 +160,7 @@ async def main():
         except discord.ConnectionClosed:
             retry_count += 1
             if retry_count < max_retries:
-                wait_time = min(2 ** retry_count, 300)  # Exponential backoff, max 5 minutes
+                wait_time = min(2 ** retry_count, 300)
                 logging.warning(f"⚠️ Connessione persa. Riprovo tra {wait_time} secondi...")
                 await asyncio.sleep(wait_time)
             else:
@@ -174,10 +173,6 @@ async def main():
                 await asyncio.sleep(10)
 
 if __name__ == "__main__":
-    # Start the keep-alive web server
-    keep_alive()
-    
-    # Start the Discord bot
     try:
         asyncio.run(main())
     except KeyboardInterrupt:

@@ -7,19 +7,19 @@ __pycache__/
 *.pyd
 .Python
 
-# File di ambiente e segreti
+# File di ambiente e segreti - MAI COMMITTARE!
 .env
 .env.local
 .env.production
 config.py
 
-# File di Replit (non necessari per GitHub)
+# File di Replit (non necessari)
 .replit
 *.repl
 replit.md
 uv.lock
 
-# Directory locali di Replit
+# Directory locali
 .local/
 .cache/
 .config/
@@ -37,12 +37,6 @@ Thumbs.db
 # File di backup
 *.bak
 *.backup
-
-# File sensibili (da non committare mai)
-attached_assets/
-generate_invite.py
-keep_awake.py
-uptime_monitor.py
 
 # Virtual environment
 venv/
