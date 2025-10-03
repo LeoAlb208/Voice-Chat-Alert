@@ -3,6 +3,18 @@ from discord.ext import commands
 import os
 import asyncio
 import logging
+from flask import Flask, render_template, jsonify
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({"status": "ok", "message": "Bot is running"})
 
 # Configure logging
 logging.basicConfig(
@@ -146,6 +158,15 @@ async def main():
     """Main function to start the bot with error handling"""
     max_retries = 5
     retry_count = 0
+    
+    # Avvia il server Flask in un thread separato
+    def run_web_server():
+        port = int(os.getenv('PORT', 8000))
+        app.run(host='0.0.0.0', port=port)
+    
+    web_thread = threading.Thread(target=run_web_server)
+    web_thread.daemon = True
+    web_thread.start()
     
     while retry_count < max_retries:
         try:
