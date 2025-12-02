@@ -1,44 +1,4 @@
-# File di log e cache
 *.log
-bot.log
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
 
-# File di ambiente e segreti - MAI COMMITTARE!
+# Never commit!!
 .env
-.env.local
-.env.production
-config.py
-
-# File di Replit (non necessari)
-.replit
-*.repl
-replit.md
-uv.lock
-
-# Directory locali
-.local/
-.cache/
-.config/
-
-# File di sistema
-.DS_Store
-Thumbs.db
-
-# File temporanei
-*.tmp
-*.temp
-*.swp
-*.swo
-
-# File di backup
-*.bak
-*.backup
-
-# Virtual environment
-venv/
-env/
-ENV/
