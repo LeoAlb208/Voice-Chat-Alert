@@ -15,7 +15,7 @@ A Discord bot that monitors voice channel activity and sends real-time notificat
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/LeoAlb208/Voice-Chat-Alert.git
 cd Voice-Chat-Alert
 ```
 
